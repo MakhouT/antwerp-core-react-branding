@@ -45,6 +45,7 @@ export class AutoComplete extends React.Component<AutoCompleteProperties, AutoCo
                         onChange={this.onChange}
                         onKeyDown={this.onKeyPress}
                         autoComplete="off"
+                        onSelectOption={this.onSelectOption}
                     />
                 }
                 size={Sizes.Default}
