@@ -135,6 +135,7 @@ export class AutoComplete extends React.Component<AutoCompleteProperties, AutoCo
         delete props.onChange;
         delete props.onKeyPress;
         delete props.options;
+        delete props.onSelectOption;
         return props;
     }
 }
