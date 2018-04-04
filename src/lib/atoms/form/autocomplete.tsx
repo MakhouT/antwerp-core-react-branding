@@ -45,7 +45,6 @@ export class AutoComplete extends React.Component<AutoCompleteProperties, AutoCo
                         onChange={this.onChange}
                         onKeyDown={this.onKeyPress}
                         autoComplete="off"
-                        onSelectOption={this.onSelectOption}
                     />
                 }
                 size={Sizes.Default}
@@ -92,16 +91,12 @@ export class AutoComplete extends React.Component<AutoCompleteProperties, AutoCo
     }
 
     private onSelectOption: (value: string) => void = (value: string) => {
-        if (this.state.value !== value) {
-            this.setState({
-                value,
-                visible: false,
-            });
-            if (this.props.onSelectOption) {
-                this.props.onSelectOption(value);
-            }
-        } else {
-            this.setState({ visible: false });
+        this.setState({
+            value,
+            visible: false,
+        });
+        if (this.props.onSelectOption) {
+            this.props.onSelectOption(value);
         }
     }
 
@@ -112,10 +107,7 @@ export class AutoComplete extends React.Component<AutoCompleteProperties, AutoCo
     private selectFirstOption: () => void = () => {
         const options = this.getOptions();
         if (options.length > 0) {
-            this.setState({
-                value: options[0],
-                visible: false,
-            });
+            this.onSelectOption(options[0]);
         }
     }
 
